@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  border: 2px solid black;
+  text-align: center;
+}
+
+input {
+  margin: 4px;
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+button {
+  margin: 1rem;
+}

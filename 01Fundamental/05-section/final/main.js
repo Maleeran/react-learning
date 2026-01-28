@@ -53,20 +53,21 @@ const cities = [
 
 function MyApp() {
   function renderForecastList(forecastList) {
-    if (!forecastList || forecastList.length === 0)
-      return <span>No Forecast</span>;
-
     return forecastList.map((forecast) => (
       <ul>
         <li>
           {forecast.date}
           <span>
             {" "}
-            {forecast.temperature}℃{forecast.weather}
+            {forecast.temperature}℃ {forecast.weather}
           </span>
         </li>
       </ul>
     ));
+  }
+
+  function isForecastExist(forecastList) {
+    return forecastList && forecastList.length !== 0;
   }
 
   return (
@@ -76,7 +77,9 @@ function MyApp() {
           <h2>{city.country}</h2>
           <h3>{city.name}</h3>
 
-          {renderForecastList(city.forecast)}
+          {/* {renderForecastList(city.forecast)} */}
+          {isForecastExist(city.forecast) && renderForecastList(city.forecast)}
+          {!isForecastExist(city.forecast) && <sapn>No Forecast</sapn>}
         </section>
       ))}
     </main>

@@ -14,7 +14,7 @@ function MyApp() {
 
     const newTodoList = [
       ...todoList,
-      { id: Math.random(new Date()), content: currentTodo, isCompleted: false },
+      { id: new Date(), content: currentTodo, isCompleted: false },
     ];
 
     setTodoList(newTodoList);

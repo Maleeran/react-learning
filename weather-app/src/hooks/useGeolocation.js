@@ -1,33 +1,40 @@
 import { useState, useEffect } from "react";
 
 function useGeolocation() {
-  const [position, setPosition] = useState(null);
+  const [status, setStatus] = useState("Get Current Weather");
 
-  function getPosition() {
-    const geolocation = navigator.geolocation;
-    if (!geolocation) {
-      alert("Geolocation is not supported by your browser!");
-      return;
-    } else {
-      geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
+  async function getPosition() {
+    return new Promise((resolve, reject) => {
+      const geolocation = navigator.geolocation;
 
-          setPosition({ latitude, longitude });
-        },
-        (error) => {
-          alert("something Wrong!");
-          console.error(error);
-        },
-      );
-    }
+      setStatus("Locating...");
+
+      if (!geolocation) {
+        reject("Geolocation is not supported by your browser!");
+        return;
+      } else {
+        geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+
+            resolve({ latitude, longitude });
+            setStatus("Get Forecast Weather");
+          },
+          (error) => {
+            alert("something Wrong!");
+            setStatus(error.message);
+            reject(error);
+          },
+        );
+      }
+    });
   }
 
-  useEffect(() => {
-    getPosition();
-  }, []);
+  // useEffect(() => {
+  //   getPosition();
+  // }, []);
 
-  return position;
+  return { getPosition, status };
 }
 
 export default useGeolocation;

@@ -1,14 +1,14 @@
-import Container from './components/Container';
-import Forecast from './components/Forecast';
-import Home from './components/Home';
-import useGeolocation from './hooks/useGeolocation.js';
+import Container from "./components/Container";
+import Forecast from "./components/Forecast";
+import Home from "./components/Home";
+import useGeolocation from "./hooks/useGeolocation.js";
 
 function App() {
-  const position = useGeolocation();
+  const { getPosition, status } = useGeolocation();
 
   return (
     <Container>
-      <Home />
+      <Home getPosition={getPosition} status={status} />
       {/* <Forecast /> */}
     </Container>
   );

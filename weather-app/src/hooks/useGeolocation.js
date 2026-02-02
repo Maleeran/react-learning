@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function useGeolocation() {
   const [status, setStatus] = useState("Get Current Weather");
+  const [position, setPosition] = useState(null);
 
   async function getPosition() {
     return new Promise((resolve, reject) => {
@@ -18,6 +19,7 @@ function useGeolocation() {
             const { latitude, longitude } = position.coords;
 
             resolve({ latitude, longitude });
+            setPosition({ latitude, longitude });
             setStatus("Get Forecast Weather");
           },
           (error) => {
@@ -34,7 +36,7 @@ function useGeolocation() {
   //   getPosition();
   // }, []);
 
-  return { getPosition, status };
+  return { getPosition, status, position };
 }
 
 export default useGeolocation;

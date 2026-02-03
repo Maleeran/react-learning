@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 // import Day from "./Day";
 import { Children, useState } from "react";
-import Welcome from "./Welcome";
-import useCurrentWeather from "../hooks/useCurrentWeather";
+import Welcome from "../../ui/Welcome";
+import useCurrentWeather from "../../hooks/useCurrentWeather";
 import CurrentWeather from "./CurrentWeather";
 
 function Home({ getPosition, status, setIsHome }) {

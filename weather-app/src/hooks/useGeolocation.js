@@ -32,10 +32,6 @@ function useGeolocation() {
     });
   }
 
-  // useEffect(() => {
-  //   getPosition();
-  // }, []);
-
   return { getPosition, status, position };
 }
 

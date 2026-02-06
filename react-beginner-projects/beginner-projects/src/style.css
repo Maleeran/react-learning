@@ -2,60 +2,63 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
 }
 
 body {
+  height: 100vh;
+  background-image: linear-gradient(to right, #fff7c8 0%, #fa709a 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: #1b1b1b;
 }
 
-.calculator {
-  position: relative;
+.card {
+  background: #f3fffe;
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 50rem;
+  height: 30rem;
+  box-shadow: 0.5px 0.5px 1px 1px rgb(255, 255, 223);
 }
 
-.calculator .value {
-  grid-column: span 4;
-  height: 100px;
-  text-align: right;
+.card-image {
+  /* background: url("../public/rohit-tandon-9wg5jCEPBsw-unsplash.jpg"); */
+
+  background: url("https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  padding: 10px 10px;
+  margin: 5px;
+  width: 20rem;
+  background: transparent;
   border: none;
+  border-bottom: 1px solid #ccc;
   outline: none;
-  padding: 10px;
-  font-size: 18px;
 }
 
-.calculator span {
-  display: grid;
-  width: 60px;
-  height: 60px;
-  background: #292929;
-  place-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+.error {
+  font-family: sans-serif;
+  color: red;
+}
+
+.submit-btn {
+  width: 80%;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: transparent;
+  background: rgb(255, 90, 123);
+  cursor: pointer;
+  border: none;
   color: #fff;
-}
-
-.calculator span:active {
-  background: rgb(255, 163, 26);
-  color: #fff;
-}
-
-.calculator span.clear {
-  grid-column: span 2;
-  width: 120px;
-  background: rgb(255, 163, 26);
-  /* color: #fff; */
-}
-
-.calculator span.plus {
-  grid-row: span 2;
-  height: 120px;
-}
-
-.calculator span.equal {
-  background: rgb(255, 163, 26);
-  /* background: #03b1ff; */
+  font-weight: bold;
 }

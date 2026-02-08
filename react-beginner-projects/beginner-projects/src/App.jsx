@@ -1,13 +1,6 @@
-import Counter from "./Components/counter";
-import Todo from "./Components/Todo";
-import Meals from "./Components/Meals";
-import Calculator from "./Components/Calculator";
-import ToggleColor from "./Components/ToggleColor";
-import HiddenSearchBar from "./Components/HiddenSearchBar";
-import Testmonials from "./Components/Testmonials";
-import { accordionData } from "./utils/content";
-import Accordion from "./Components/Accordion";
-import Form from "./Components/Form";
+import BasicEffect from "./Components/BasicEffect";
+import CountEffect from "./Components/CountEffect";
+import FetchEffect from "./Components/FetchEffect";
 
 const App = () => {
   return (
@@ -24,7 +17,10 @@ const App = () => {
           <Accordion title={title} content={content} />
         ))}
       </div> */}
-      <Form />
+      {/* <Form /> */}
+      {/* <BasicEffect /> */}
+      {/* <CountEffect /> */}
+      <FetchEffect />
     </div>
   );
 };

@@ -1,15 +1,17 @@
+import Buttons from "../components/Buttons";
 import "./Recommended.css";
-const Recommended = () => {
+
+const Recommended = ({ handleClick }) => {
   return (
     <>
       <div>
         <h2 className="recommended-title">Recommended</h2>
         <div className="recommended-flex">
-          <button className="btns">All Products</button>
-          <button className="btns">Nike</button>
-          <button className="btns">Adidas</button>
-          <button className="btns">Puma</button>
-          <button className="btns">Vans</button>
+          <Buttons handleClick={handleClick} value="" title="All Products" />
+          <Buttons handleClick={handleClick} value="Nike" title="Nike" />
+          <Buttons handleClick={handleClick} value="Adidas" title="Adidas" />
+          <Buttons handleClick={handleClick} value="Puma" title="Puma" />
+          <Buttons handleClick={handleClick} value="Vans" title="Vans" />
         </div>
       </div>
     </>

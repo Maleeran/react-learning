@@ -6,6 +6,7 @@ const CountEffect = () => {
   useEffect(() => {
     document.title = `Count:${count}`;
   }, [count]);
+
   return (
     <div>
       <h1>Count:{count}</h1>

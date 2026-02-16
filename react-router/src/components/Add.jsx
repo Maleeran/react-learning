@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-
+import toast from "react-hot-toast";
 import { useLocalStorage } from "react-use";
 
 const Add = () => {
@@ -10,9 +10,18 @@ const Add = () => {
   const [memoList, setMemoList] = useLocalStorage("memo-list");
 
   function appendMemo() {
-    const newMemoList = [...memoList, { id: Date.now(), title, body: content }];
+    if (title === "" || content === "") {
+      toast.error("You need to fill in both title and content");
+      return;
+    }
+
+    const newMemoList = [...memoList, { id: Date.now(), title, content }];
 
     setMemoList(newMemoList);
+    toast.success("Successfully Added!");
+
+    setTitle("");
+    setContent("");
   }
 
   return (
@@ -31,6 +40,7 @@ const Add = () => {
         label="Title"
         variant="standard"
         style={{ width: "75%" }}
+        value={title}
         onChange={(e) => {
           setTitle(e.target.value);
         }}
@@ -40,9 +50,9 @@ const Add = () => {
         label="Content"
         multiline
         rows={4}
-        defaultValue=""
         variant="standard"
         style={{ width: "75%" }}
+        value={content}
         onChange={(e) => {
           setContent(e.target.value);
         }}

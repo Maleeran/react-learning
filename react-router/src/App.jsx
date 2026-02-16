@@ -1,9 +1,9 @@
-import MemoList from "./components/MemoList";
-import NavBar from "./components/NavBar";
-import BottomNav from "./components/BottomNav";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Add from "./components/Add";
+
 import AppLayout from "./components/AppLayout";
+import MemoList from "./components/MemoList";
+import Search from "./components/Search";
+import Add from "./components/Add";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<MemoList />} />
+          <Route path="/Search" element={<Search />} />
           <Route path="/Add" element={<Add />} />
         </Route>
       </Routes>

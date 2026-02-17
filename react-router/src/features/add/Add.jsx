@@ -18,7 +18,7 @@ const Add = () => {
     const newMemoList = [...memoList, { id: Date.now(), title, content }];
 
     setMemoList(newMemoList);
-    toast.success("Successfully Added!");
+    toast.success("Successfully added!");
 
     setTitle("");
     setContent("");

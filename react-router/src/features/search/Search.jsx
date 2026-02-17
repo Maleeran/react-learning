@@ -1,9 +1,18 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import MemoList from "./MemoList";
+import MemoList from "../../components/MemoList";
+import { useSearchParams } from "react-router";
 
 const Search = () => {
-  const [searchItem, setSearchItem] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchItem, setSearchItem] = useState(searchParams.get("q") || "");
+
+  function onChange(event) {
+    const { value } = event.target;
+
+    setSearchItem(value);
+    setSearchParams({ q: value });
+  }
 
   return (
     <div
@@ -17,9 +26,7 @@ const Search = () => {
         label="Search Memo Title"
         variant="standard"
         value={searchItem}
-        onChange={(e) => {
-          setSearchItem(e.target.value);
-        }}
+        onChange={onChange}
       />
       <MemoList searchItem={searchItem} />
     </div>

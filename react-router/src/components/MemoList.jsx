@@ -3,6 +3,7 @@ import MemoListItem from "./MemoListItem";
 import { useLocalStorage } from "react-use";
 import { useState } from "react";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const MemoList = ({ searchItem = "" }) => {
   // const dataList = [
@@ -82,8 +83,17 @@ const MemoList = ({ searchItem = "" }) => {
   //     content: " Do you have Paris recommendations? Have you ever…",
   //   },
   // ];
-  const [memoList] = useLocalStorage("memo-list", []);
+  const [memoList, setMemoList] = useLocalStorage("memo-list", []);
   const [filteredMemoList, setFilteredMemoList] = useState(memoList);
+
+  function deleteMemo(id) {
+    const newMemoList = memoList.filter((memoItem) => memoItem.id !== id);
+    setMemoList(newMemoList);
+
+    toast("Successfully deleted", {
+      icon: "🗑",
+    });
+  }
 
   useEffect(() => {
     if (searchItem === "") setFilteredMemoList(memoList);
@@ -109,7 +119,11 @@ const MemoList = ({ searchItem = "" }) => {
       }}
     >
       {filteredMemoList.map((memoItem) => (
-        <MemoListItem key={memoItem.id} memoItem={memoItem} />
+        <MemoListItem
+          key={memoItem.id}
+          memoItem={memoItem}
+          deleteMemo={deleteMemo}
+        />
       ))}
     </List>
   );

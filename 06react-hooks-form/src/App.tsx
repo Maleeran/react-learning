@@ -1,11 +1,11 @@
-// import Form from "./components/Form";
-import MyForm from "./components/MyForm";
+import Form from "./components/Form";
+// import MyForm from "./components/MyForm";
 
 const App = () => {
   return (
     <>
-      <MyForm />
-      {/* <Form /> */}
+      {/* <MyForm /> */}
+      <Form />
     </>
   );
 };
